@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#251638">
+<title>My Singing Shapes — Fan Guide</title>
+<style>
+:root{--bg:#21142f;--panel:#352148;--panel2:#432b5a;--wood:#9a6235;--gold:#ffd34e;--lime:#a9ef58;--pink:#ff79b5;--cream:#fff2d9;--muted:#c9b8d8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#5c3977 0,#21142f 55%);color:var(--cream);font-family:Trebuchet MS,system-ui,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#241632ed;border-bottom:4px solid #6f472b;backdrop-filter:blur(10px)}
+.nav{max-width:1120px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:1000;letter-spacing:1px;color:var(--gold);text-shadow:2px 3px #130a1c;font-size:20px}.navlinks{display:flex;gap:16px;flex-wrap:wrap}.navlinks a{color:var(--cream);text-decoration:none;font-weight:800}.navlinks a:hover{color:var(--lime)}
+main{max-width:1120px;margin:auto;padding:28px 20px 70px}.hero{min-height:380px;border:5px solid var(--wood);border-radius:26px;background:linear-gradient(145deg,#62c9ef,#3e87c8 52%,#5c3977);box-shadow:0 8px 0 #160d20;display:grid;place-items:center;text-align:center;padding:35px 20px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#ffffff18;filter:blur(2px)}.hero:before{left:-65px;bottom:-100px}.hero:after{right:-55px;top:-100px}.hero h1{font-size:clamp(42px,8vw,82px);line-height:.95;margin:8px 0;color:var(--gold);text-shadow:0 5px #5b3218,4px 0 #5b3218,-4px 0 #5b3218,0 -3px #5b3218}.hero h1 span{display:block;color:#ff8ac1}.hero p{font-size:18px;font-weight:800;max-width:620px;text-shadow:1px 2px #244}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-block;border:3px solid #25470d;border-radius:12px;background:var(--lime);color:#18300c;padding:12px 20px;font-weight:1000;text-decoration:none;box-shadow:0 5px #18300c;cursor:pointer}.btn.alt{background:var(--pink);border-color:#641d43;color:#fff;box-shadow:0 5px #42132d}.section{margin-top:42px}.section h2{font-size:30px;color:var(--lime);text-shadow:2px 3px #120a19;margin:0 0 8px}.lead{color:var(--muted);line-height:1.5;margin:0 0 18px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:3px solid var(--wood);border-radius:18px;padding:16px;box-shadow:0 5px #160d20}.shape{height:120px;display:grid;place-items:center;font-size:74px;text-shadow:0 4px #130a1c}.shape.circle{color:#74d452}.shape.triangle{color:#ff9148}.shape.square{color:#56b9f4}.shape.star{color:#ffd94f}.shape.diamond{color:#c5adff}.card h3{margin:4px 0;color:#fff;font-size:22px}.tag{display:inline-block;background:#21142f;border:1px solid #78548f;border-radius:20px;padding:4px 9px;font-size:12px;font-weight:900;color:var(--gold);margin:2px}.card p{color:var(--muted);line-height:1.45;margin-bottom:0}.tool{background:#291a3a;border:3px solid var(--wood);border-radius:18px;padding:18px}.pickers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pickers label{display:block;font-weight:900;margin-bottom:6px}.pickers select,input{width:100%;padding:12px;border-radius:10px;border:2px solid #76548c;background:#1d1229;color:white;font:inherit}.result{margin-top:15px;background:#3b2850;border-radius:12px;padding:14px;line-height:1.55}.combo-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.combo{background:#3a2850;border:2px solid #76548c;border-radius:12px;padding:13px}.combo b{color:var(--gold)}.notice{border-left:5px solid var(--pink);padding:10px 14px;background:#432342;border-radius:8px;color:#f7d9e9;line-height:1.5}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:48px}
+@media(max-width:600px){.nav{align-items:flex-start;flex-direction:column}.pickers{grid-template-columns:1fr}.hero{min-height:330px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">♫ MY SINGING SHAPES</div><nav class="navlinks"><a href="#characters">Shapes</a><a href="#breeding">Breeding guide</a><a href="#about">About</a></nav></div></header>
+<main>
+<section class="hero">
+  <div><div style="font-weight:1000;letter-spacing:5px;color:white">A FAN-MADE FIELD GUIDE</div>
+  <h1>MY SINGING <span>SHAPES</span></h1>
+  <p>Meet the musical shapes, learn their elements, and explore breeding ideas. Then jump into the game!</p>
+  <div class="actions"><a class="btn" href="game.html">▶ PLAY THE GAME</a><a class="btn alt" href="#breeding">✦ BREEDING GUIDE</a></div></div>
+</section>
+
+<section class="section" id="characters">
+<h2>Meet the Shapes</h2><p class="lead">A few familiar faces from the Shape world. Use the search box to find a character or an element.</p>
+<input id="search" type="search" placeholder="Search shapes, sounds or elements…" aria-label="Search shapes">
+<div class="cards" id="characterCards" style="margin-top:15px"></div>
+</section>
+
+<section class="section" id="breeding">
+<h2>Breeding Guide</h2><p class="lead">Choose two Shapes to see the elements they bring together and what kind of common Shape that element mix can point toward.</p>
+<div class="tool">
+  <div class="pickers">
+    <div><label for="parentA">First parent</label><select id="parentA"></select></div>
+    <div><label for="parentB">Second parent</label><select id="parentB"></select></div>
+  </div>
+  <div class="result" id="breedResult" aria-live="polite">Choose two parents to explore their element mix.</div>
+</div>
+<div class="notice" style="margin-top:14px"><b>Important:</b> This fan guide is an explainer, not a guaranteed-result calculator. The game has island-specific hidden recipes and chance-based breeding. Rare, Epic and Ruin pairings are not fully revealed here. For the actual breeding system, open the game and use its Breeding Structure.</div>
+<div class="combo-list">
+ <div class="combo"><b>Common breeding</b><br>Parents can combine their elements to match a common Shape available on that island. Parent Shapes can also be bred again.</div>
+ <div class="combo"><b>Rare recipes</b><br>The game code describes Rare recipes as an island Quad plus a Triple, with a low chance.</div>
+ <div class="combo"><b>Epic recipes</b><br>The game code describes Epic recipes as a Triple plus a Double, with a low chance.</div>
+ <div class="combo"><b>Ruin recipe</b><br>Each island has a special pairing of two specific Triple Shapes for its Ruin Shape.</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>About this fan guide</h2>
+<p class="lead">This is an unofficial fan-made companion page for My Singing Shapes. It includes a link to the game file supplied for this project, a small character guide, and a breeding explainer. It is not affiliated with any official publisher or rights holder.</p>
+</section>
+<div class="footer">Made for Shape fans • Character details and breeding notes are based on the supplied game file.</div>
+</main>
+<script>
+const shapes = [
+ {id:"bobble",name:"Bobble",cat:"Circle",elements:["Moss"],sound:"Bouncy kick drum",desc:"The heartbeat of the island song. Bobble starts every groove with a bouncy thump.",emoji:"●",css:"circle"},
+ {id:"tikki",name:"Tikki",cat:"Triangle",elements:["Ember"],sound:"Crisp hi-hats",desc:"Taps its three hot little points to keep time for everyone.",emoji:"▲",css:"triangle"},
+ {id:"blocco",name:"Blocco",cat:"Square",elements:["Tide"],sound:"Plucky round bass",desc:"A heavy, square Shape whose deep bass makes puddles ripple.",emoji:"■",css:"square"},
+ {id:"twinkla",name:"Twinkla",cat:"Star",elements:["Lumen"],sound:"Music-box bells",desc:"Glows brighter with every note and sprinkles bells over the island.",emoji:"★",css:"star"},
+ {id:"zephyx",name:"Zephyx",cat:"Diamond",elements:["Gust"],sound:"Warm synth pad",desc:"A drifting diamond that breathes long chords into the song.",emoji:"◆",css:"diamond"},
+ {id:"clackle",name:"Clackle",cat:"Triangle",elements:["Moss","Ember"],sound:"Snare and claps",desc:"Snaps its pointy jaw on the backbeat.",emoji:"▲",css:"triangle"},
+ {id:"gloobo",name:"Gloobo",cat:"Circle",elements:["Moss","Tide"],sound:"Deep bass voice",desc:"Sings from its belly with a low, rumbling voice.",emoji:"●",css:"circle"},
+ {id:"hexbloom",name:"Hexbloom",cat:"Hexagon",elements:["Moss","Lumen"],sound:"Wooden marimba",desc:"Petals grow from every corner and tap out a marimba riff.",emoji:"⬡",css:"star"},
+ {id:"rumbletum",name:"Rumbletum",cat:"Square",elements:["Moss","Gust"],sound:"Booming tom drums",desc:"Drums on its hollow tummy and loves a big fill.",emoji:"■",css:"square"},
+ {id:"fizzwick",name:"Fizzwick",cat:"Hexagon",elements:["Ember","Tide"],sound:"Fizzy shaker groove",desc:"Half fire, half water, all steam and bubbly rhythm.",emoji:"⬡",css:"triangle"},
+ {id:"solara",name:"Solara",cat:"Star",elements:["Ember","Lumen"],sound:"Lead-synth melody",desc:"A blazing lead singer that carries the main tune.",emoji:"★",css:"star"},
+ {id:"whirlo",name:"Whirlo",cat:"Triangle",elements:["Ember","Gust"],sound:"Spinning pluck",desc:"A tornado-like triangle that spins out a plucky arpeggio.",emoji:"▲",css:"triangle"}
+];
+const cardHost=document.getElementById("characterCards");
+function renderCards(q=""){
+ const query=q.toLowerCase();
+ cardHost.innerHTML=shapes.filter(s=>(s.name+" "+s.cat+" "+s.elements.join(" ")+" "+s.sound).toLowerCase().includes(query)).map(s=>`
+ <article class="card"><div class="shape ${s.css}">${s.emoji}</div><h3>${s.name}</h3><span class="tag">${s.cat}</span>${s.elements.map(e=>`<span class="tag">${e}</span>`).join("")}<p>${s.desc}</p><p><b>Sound:</b> ${s.sound}</p></article>`).join("")||"<p>No Shapes found. Try another search.</p>";
+}
+renderCards();document.getElementById("search").addEventListener("input",e=>renderCards(e.target.value));
+const a=document.getElementById("parentA"),b=document.getElementById("parentB");
+shapes.forEach(s=>{[a,b].forEach(sel=>{const o=document.createElement("option");o.value=s.id;o.textContent=s.name+" — "+s.elements.join(" + ");sel.append(o)})});
+b.value="tikki";
+function updateBreed(){
+ const A=shapes.find(s=>s.id===a.value),B=shapes.find(s=>s.id===b.value);
+ const union=[...new Set([...A.elements,...B.elements])];
+ const matches=shapes.filter(s=>s.elements.length===union.length&&union.every(e=>s.elements.includes(e)));
+ document.getElementById("breedResult").innerHTML=`<b>${A.name}</b> (${A.elements.join(" + ")}) + <b>${B.name}</b> (${B.elements.join(" + ")})<br><br><b>Combined elements:</b> ${union.join(" + ")}<br><b>Matching Shapes in this guide:</b> ${matches.length?matches.map(s=>s.name).join(", "):"No listed common match in this small guide."}<br><small style="color:#c9b8d8">This shows element overlap only; it does not reveal hidden island recipes or guarantee an egg.</small>`;
+}
+a.addEventListener("change",updateBreed);b.addEventListener("change",updateBreed);updateBreed();
+</script>
+</body></html>
