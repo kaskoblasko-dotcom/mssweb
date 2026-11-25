@@ -4,960 +4,611 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SHAPES / Breeding Archive</title>
+<title>My Singing Shapes — Fan Guide</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-
 :root {
-  --bg: #0b0d0c;
-  --surface: #111512;
-  --surface-2: #171c18;
-  --line: #293029;
-  --text: #e8ece5;
-  --muted: #899389;
-  --dim: #5e685f;
-  --accent: #c5f36a;
-  --rare: #7ecbd9;
-  --epic: #c49bfa;
-  --ruin: #e6b76b;
+  color-scheme: dark;
+  --bg: #17191b;
+  --panel: #202326;
+  --panel2: #262a2e;
+  --line: #383d42;
+  --text: #e6e8e9;
+  --muted: #a0a7ac;
+  --accent: #b8d77a;
+  --rare: #77b9e8;
+  --epic: #c59be8;
+  --ruin: #e7b66e;
 }
-
 * { box-sizing: border-box; }
-
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font: 14px/1.55 Arial, Helvetica, sans-serif;
 }
-
 a { color: inherit; text-decoration: none; }
-
-button, input, select { font: inherit; }
-
-.topbar {
-  height: 64px;
+a:hover { color: var(--accent); }
+header {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 28px;
+  background: #111315;
   border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  padding: 0 5vw;
-  justify-content: space-between;
 }
-
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -.4px;
+  letter-spacing: .2px;
+  white-space: nowrap;
 }
-
-.brand-mark {
-  width: 27px;
-  height: 27px;
-  display: grid;
-  place-items: center;
-  color: var(--bg);
-  background: var(--accent);
-  font-weight: 800;
-  font-size: 17px;
-}
-
-.brand small {
-  color: var(--dim);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: 1.5px;
-  margin-left: 4px;
-}
-
-.top-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.brand span { color: var(--accent); }
+.top-label {
   color: var(--muted);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 12px;
+  border-left: 1px solid var(--line);
+  padding-left: 20px;
 }
-
-.status {
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.status:before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
 .layout {
+  display: grid;
+  grid-template-columns: 218px minmax(0, 1fr);
   max-width: 1440px;
   margin: auto;
-  padding: 0 5vw;
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 64px;
+  min-height: calc(100vh - 58px);
 }
-
-.sidebar {
-  padding: 44px 0;
+aside {
   border-right: 1px solid var(--line);
-  min-height: calc(100vh - 64px);
+  padding: 26px 16px;
+  background: #1b1e20;
 }
-
-.side-label {
-  font: 10px 'DM Mono', monospace;
-  color: var(--dim);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin: 0 0 16px;
-}
-
-.side-nav {
-  display: grid;
-  gap: 5px;
-  padding-right: 24px;
-}
-
-.side-nav button {
-  text-align: left;
-  background: transparent;
-  border: 0;
-  color: var(--muted);
-  padding: 10px 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-left: 2px solid transparent;
-  transition: .15s;
-}
-
-.side-nav button:hover,
-.side-nav button.active {
-  color: var(--text);
-  background: var(--surface-2);
-  border-left-color: var(--accent);
-}
-
-.side-nav button span:last-child {
-  color: var(--dim);
-  font: 10px 'DM Mono', monospace;
-}
-
-.side-note {
-  margin: 42px 24px 0 0;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  color: var(--dim);
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.main {
-  min-width: 0;
-  padding: 54px 0 90px;
-}
-
-.kicker {
-  color: var(--accent);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-h1 {
-  font: 700 clamp(36px, 5vw, 57px)/1.05 'Space Grotesk', sans-serif;
-  letter-spacing: -2.5px;
-  margin: 15px 0 13px;
-}
-
-.intro {
-  max-width: 600px;
-  color: var(--muted);
-  line-height: 1.75;
-  font-size: 14px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 36px 0 48px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-}
-
-.stat {
-  padding: 17px 20px;
-  border-right: 1px solid var(--line);
-}
-
-.stat:last-child { border: 0; }
-
-.stat-number {
-  font: 600 25px 'Space Grotesk', sans-serif;
-}
-
-.stat-label {
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  margin-top: 5px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.section-heading h2 {
-  font: 600 22px 'Space Grotesk', sans-serif;
-  margin: 6px 0 0;
-  letter-spacing: -.5px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  margin: 7px 0 0;
-  font-size: 12px;
-}
-
-.filters {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) 160px;
-  gap: 9px;
-  margin-bottom: 24px;
-}
-
-.field {
-  width: 100%;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--text);
-  border-radius: 0;
-  padding: 12px 14px;
-  outline: none;
-  min-height: 43px;
-}
-
-.field:focus { border-color: var(--accent); }
-
-.field::placeholder { color: var(--dim); }
-
-.archive-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 11px 14px;
-  border: 1px solid var(--line);
-  border-bottom: 0;
-  background: #0e120f;
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.recipe-table {
-  border: 1px solid var(--line);
-  margin-bottom: 24px;
-}
-
-.island-title {
-  padding: 17px 18px;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.island-title h3 {
-  font: 600 16px 'Space Grotesk', sans-serif;
-  margin: 0;
-}
-
-.island-elements {
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 5px;
-}
-
-.island-total {
-  color: var(--muted);
-  font: 10px 'DM Mono', monospace;
-}
-
-.table-head,
-.recipe-row {
-  display: grid;
-  grid-template-columns: minmax(130px, 1.15fr) minmax(100px, .9fr) 30px minmax(100px, .9fr) 70px 75px;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 17px;
-}
-
-.table-head {
-  background: #0e120f;
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
-}
-
-.recipe-row {
-  min-height: 57px;
-  border-bottom: 1px solid #202820;
-  transition: background .15s;
-}
-
-.recipe-row:last-child { border-bottom: 0; }
-
-.recipe-row:hover { background: #171d18; }
-
-.result-name {
+.side-heading {
+  color: #858e94;
+  font-size: 10px;
   font-weight: 700;
-  font-size: 12px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  padding: 0 10px;
+  margin: 0 0 10px;
 }
-
-.result-sub {
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  margin-top: 4px;
+.island-link {
+  display: block;
+  padding: 9px 10px;
+  margin: 2px 0;
+  border-radius: 3px;
+  color: #c4c9cc;
+  font-size: 13px;
 }
-
-.parent-name {
-  color: #c4ccc1;
+.island-link:hover { background: var(--panel2); }
+.island-link.active {
+  color: var(--accent);
+  background: #2b3324;
+  border-left: 2px solid var(--accent);
+  padding-left: 8px;
+}
+.side-note {
+  margin: 28px 10px 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
   font-size: 11px;
-  overflow-wrap: anywhere;
 }
-
-.plus {
-  color: var(--dim);
-  text-align: center;
-  font: 12px 'DM Mono', monospace;
+main {
+  width: 100%;
+  max-width: 1120px;
+  padding: 34px 42px 70px;
 }
-
-.tag {
-  font: 9px 'DM Mono', monospace;
+.breadcrumb {
+  color: #899197;
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+h1 {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -.7px;
+}
+.intro {
+  color: var(--muted);
+  max-width: 690px;
+  margin: 9px 0 26px;
+}
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+}
+.section-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+.section-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+.info-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 700px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  margin-bottom: 26px;
+}
+.info-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.info-table tr:last-child td { border-bottom: 0; }
+.info-table td:first-child {
+  color: var(--muted);
+  width: 150px;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 19px 0 12px;
+}
+input, select {
+  height: 36px;
+  border: 1px solid #454b50;
+  border-radius: 3px;
+  background: #202427;
+  color: var(--text);
+  padding: 0 11px;
+  font: inherit;
+  outline: none;
+}
+input { width: min(330px, 100%); }
+input:focus, select:focus { border-color: var(--accent); }
+.result-count {
+  color: var(--muted);
+  font-size: 12px;
+  margin-left: auto;
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+thead { background: #292e32; }
+th {
+  padding: 11px 13px;
+  color: #b9c0c4;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .6px;
-  font-weight: 500;
+  border-bottom: 1px solid var(--line);
 }
-
-.tag.rare { color: var(--rare); }
-.tag.epic { color: var(--epic); }
-.tag.ruin { color: var(--ruin); }
-
-.probability {
-  text-align: right;
-  font: 11px 'DM Mono', monospace;
-  color: var(--text);
+td {
+  padding: 10px 13px;
+  border-bottom: 1px solid #33383c;
 }
-
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #292e32; }
+.name { font-weight: 600; }
+.rarity {
+  font-size: 11px;
+  font-weight: 700;
+}
+.rarity.rare { color: var(--rare); }
+.rarity.epic { color: var(--epic); }
+.rarity.ruin { color: var(--ruin); }
+.chance {
+  font-variant-numeric: tabular-nums;
+  color: #cbd1d4;
+}
 .empty {
-  padding: 42px 20px;
-  border: 1px solid var(--line);
-  color: var(--muted);
   text-align: center;
-}
-
-.guide-note {
-  border-left: 2px solid var(--accent);
-  padding: 14px 17px;
-  background: var(--surface);
   color: var(--muted);
+  padding: 30px;
+}
+.notice {
+  border-left: 3px solid var(--accent);
+  background: #242a20;
+  padding: 11px 14px;
+  color: #cbd3c1;
   font-size: 12px;
-  line-height: 1.8;
-  margin-top: 30px;
+  margin: 20px 0;
+  max-width: 760px;
 }
-
-.guide-note strong { color: var(--text); }
-
 footer {
-  max-width: 1440px;
-  margin: auto;
-  padding: 25px 5vw;
   border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  color: var(--dim);
-  font: 9px 'DM Mono', monospace;
-  letter-spacing: .8px;
-  text-transform: uppercase;
+  margin-top: 40px;
+  padding-top: 15px;
+  color: #7e878d;
+  font-size: 11px;
 }
-
-@media(max-width: 950px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .sidebar {
-    min-height: auto;
+@media (max-width: 720px) {
+  header { padding: 0 16px; }
+  .top-label { display: none; }
+  .layout { display: block; }
+  aside {
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    padding: 18px 0;
+    padding: 12px;
   }
-
-  .side-nav {
+  .side-heading { margin: 0 0 7px; }
+  .island-list {
     display: flex;
     overflow-x: auto;
-    padding: 0;
+    gap: 4px;
   }
-
-  .side-nav button {
-    white-space: nowrap;
-  }
-
+  .island-link { white-space: nowrap; }
   .side-note { display: none; }
-
-  .main { padding-top: 40px; }
-}
-
-@media(max-width: 650px) {
-  .topbar { padding: 0 18px; }
-  .top-right { gap: 10px; font-size: 8px; }
-  .layout { padding: 0 18px; }
-  .filters { grid-template-columns: 1fr; }
-  .stats { margin: 27px 0 37px; }
-  .stat { padding: 13px 10px; }
-  .stat-number { font-size: 21px; }
-  .stat-label { font-size: 8px; }
-
-  .table-head,
-  .recipe-row {
-    grid-template-columns: minmax(100px, 1fr) minmax(80px, .8fr) 15px minmax(80px, .8fr) 55px;
-    gap: 7px;
-    padding: 11px 9px;
-  }
-
-  .table-head > :nth-child(5),
-  .recipe-row > :nth-child(5) {
-    display: none;
-  }
-
-  .table-head > :last-child,
-  .recipe-row > :last-child {
-    text-align: right;
-  }
-
-  .result-name { font-size: 11px; }
-  .parent-name { font-size: 10px; }
-  footer { padding: 22px 18px; flex-direction: column; }
-}
-
-@media(max-width: 390px) {
-  .table-head,
-  .recipe-row {
-    grid-template-columns: minmax(85px, 1fr) minmax(65px, .8fr) 12px minmax(65px, .8fr) 45px;
-    gap: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
-  }
+  main { padding: 25px 16px 50px; }
+  h1 { font-size: 25px; }
+  .result-count { width: 100%; margin-left: 0; }
 }
 </style>
 </head>
-
 <body>
-
-<header class="topbar">
-  <a href="#" class="brand">
-    <span class="brand-mark">S</span>
-    SHAPES <small>FIELD ARCHIVE / 001</small>
-  </a>
-  <div class="top-right">
-    <span class="status">DATABASE ONLINE</span>
-    <span>FAN PROJECT</span>
-  </div>
+<header>
+  <a class="brand" href="#"><span>MY SINGING</span> SHAPES</a>
+  <div class="top-label">Community fan guide</div>
 </header>
 
 <div class="layout">
-
-<aside class="sidebar">
-  <div class="side-label">Archive navigation</div>
-  <nav class="side-nav" id="islandNav">
-    <button class="active" data-island="all">
-      All islands <span>05</span>
-    </button>
-  </nav>
-
-  <div class="side-note">
-    BREEDING DATABASE<br><br>
-    A reference archive for special shape discoveries.
-    Browse by island, rarity, or parent combination.
-  </div>
-</aside>
-
-<main class="main">
-
-  <div class="kicker">My Singing Shapes / Research Division</div>
-
-  <h1>The Breeding<br>Archive<span style="color:var(--accent)">.</span></h1>
-
-  <p class="intro">
-    A reference for the unusual. Explore the known breeding
-    combinations for Rare, Epic, and Ruin shapes across the
-    five islands. Common combinations are deliberately omitted.
-  </p>
-
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-number" id="totalRecipes">165</div>
-      <div class="stat-label">Secret recipes</div>
+  <aside>
+    <div class="side-heading">Breeding guide</div>
+    <nav class="island-list" id="islandNav"></nav>
+    <div class="side-note">
+      Recipe reference<br>
+      Rare · Epic · Ruin
     </div>
-    <div class="stat">
-      <div class="stat-number">05</div>
-      <div class="stat-label">Islands indexed</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">03</div>
-      <div class="stat-label">Special rarities</div>
-    </div>
-  </div>
+  </aside>
 
-  <section>
-    <div class="section-heading">
-      <div>
-        <div class="kicker">01 / Recipe lookup</div>
-        <h2>Find a combination</h2>
-        <p>Search results, parents, or filter by rarity and island.</p>
-      </div>
+  <main>
+    <div class="breadcrumb">Fan guide / Breeding / <span id="crumb">Shape Island</span></div>
+    <h1 id="islandTitle">Shape Island</h1>
+    <p class="intro">
+      Breeding combinations for special monsters. Select an island to view its
+      recipes, or search for a monster or parent combination.
+    </p>
+
+    <h2 class="section-title">Island information</h2>
+    <div class="section-subtitle">Elements found on this island</div>
+    <table class="info-table">
+      <tr><td>Island</td><td id="infoName">Shape Island</td></tr>
+      <tr><td>Elements</td><td id="infoElements">Moss, Ember, Tide, Lumen</td></tr>
+    </table>
+
+    <hr class="rule">
+
+    <h2 class="section-title">Special breeding combinations</h2>
+    <div class="section-subtitle">
+      Recipes are island-specific. The listed chance is the chance of receiving
+      the special monster; otherwise, the normal result is produced.
     </div>
 
-    <div class="filters">
-      <input
-        class="field"
-        id="search"
-        type="search"
-        placeholder="Search shape or parent..."
-      >
+    <div class="notice">
+      Common breeding combinations are intentionally not listed here.
+      Rare recipes have a 4% chance, Epic recipes have a 6% chance,
+      and Ruin recipes have a 10% chance.
+    </div>
 
-      <select class="field" id="rarity">
-        <option value="all">All rarities</option>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search monster or parent..." autocomplete="off">
+      <select id="rarity">
+        <option value="all">All special rarities</option>
         <option value="Rare">Rare</option>
         <option value="Epic">Epic</option>
         <option value="Ruin">Ruin</option>
       </select>
+      <span class="result-count" id="count"></span>
     </div>
 
-    <div class="archive-toolbar">
-      <span>BREEDING RECORDS</span>
-      <span id="resultCount">165 RECORDS</span>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Monster</th>
+            <th>Rarity</th>
+            <th>Parent 1</th>
+            <th>Parent 2</th>
+            <th>Chance</th>
+          </tr>
+        </thead>
+        <tbody id="recipes"></tbody>
+      </table>
     </div>
 
-    <div id="archive"></div>
-
-    <div class="guide-note">
-      <strong>Breeding probabilities.</strong>
-      Rare recipes have a 4% chance, Epic recipes have a 6%
-      chance, and Ruin recipes have a 10% chance according to
-      the supplied recipe data. The pair must be bred on the
-      corresponding island. An unsuccessful attempt gives the
-      normal result.
-    </div>
-  </section>
-
-</main>
+    <footer>
+      My Singing Shapes is a fan-made reference project. Not an official game website.
+    </footer>
+  </main>
 </div>
 
-<footer>
-  <span>My Singing Shapes — Unofficial fan archive</span>
-  <span>Not affiliated with the original game creators</span>
-</footer>
-
 <script>
-const rawData = {
+const islands = {
 "Shape Island": {
-elements: "Moss / Ember / Tide / Lumen",
-recipes: `
-Dodecadon|Ruin|Clocktri|Novastar
-Rare Blocco|Rare|Bongaroo|Hexapella
-Rare Bobble|Rare|Clocktri|Hexapella
-Rare Bongaroo|Rare|Bongaroo|Hexapella
-Rare Clackle|Rare|Hexapella|Kelpsong
-Rare Clocktri|Rare|Bongaroo|Hexapella
-Rare Dodecadon|Rare|Hexapella|Novastar
-Rare Fizzwick|Rare|Hexapella|Novastar
-Rare Gloobo|Rare|Hexapella|Kelpsong
-Rare Hexapella|Rare|Clocktri|Hexapella
-Rare Hexbloom|Rare|Hexapella|Kelpsong
-Rare Kelpsong|Rare|Clocktri|Hexapella
-Rare Lulla|Rare|Clocktri|Hexapella
-Rare Novastar|Rare|Hexapella|Novastar
-Rare Solara|Rare|Hexapella|Kelpsong
-Rare Tikki|Rare|Bongaroo|Hexapella
-Rare Twinkla|Rare|Hexapella|Novastar
-Epic Blocco|Epic|Clocktri|Lulla
-Epic Bobble|Epic|Clocktri|Solara
-Epic Bongaroo|Epic|Clackle|Novastar
-Epic Clackle|Epic|Gloobo|Kelpsong
-Epic Clocktri|Epic|Fizzwick|Kelpsong
-Epic Dodecadon|Epic|Bongaroo|Fizzwick
-Epic Fizzwick|Epic|Clocktri|Fizzwick
-Epic Gloobo|Epic|Clackle|Kelpsong
-Epic Hexapella|Epic|Clocktri|Hexbloom
-Epic Hexbloom|Epic|Fizzwick|Novastar
-Epic Kelpsong|Epic|Bongaroo|Lulla
-Epic Lulla|Epic|Lulla|Novastar
-Epic Novastar|Epic|Kelpsong|Solara
-Epic Solara|Epic|Clocktri|Gloobo
-Epic Tikki|Epic|Bongaroo|Solara
-Epic Twinkla|Epic|Bongaroo|Gloobo
-`
+  elements: "Moss, Ember, Tide, Lumen",
+  recipes: `
+Dodecadon|Ruin|Clocktri|Novastar|10%
+Rare Blocco|Rare|Bongaroo|Hexapella|4%
+Rare Bobble|Rare|Clocktri|Hexapella|4%
+Rare Bongaroo|Rare|Bongaroo|Hexapella|4%
+Rare Clackle|Rare|Hexapella|Kelpsong|4%
+Rare Clocktri|Rare|Bongaroo|Hexapella|4%
+Rare Dodecadon|Rare|Hexapella|Novastar|4%
+Rare Fizzwick|Rare|Hexapella|Novastar|4%
+Rare Gloobo|Rare|Hexapella|Kelpsong|4%
+Rare Hexapella|Rare|Clocktri|Hexapella|4%
+Rare Hexbloom|Rare|Hexapella|Kelpsong|4%
+Rare Kelpsong|Rare|Clocktri|Hexapella|4%
+Rare Lulla|Rare|Clocktri|Hexapella|4%
+Rare Novastar|Rare|Hexapella|Novastar|4%
+Rare Solara|Rare|Hexapella|Kelpsong|4%
+Rare Tikki|Rare|Bongaroo|Hexapella|4%
+Rare Twinkla|Rare|Hexapella|Novastar|4%
+Epic Blocco|Epic|Clocktri|Lulla|6%
+Epic Bobble|Epic|Clocktri|Solara|6%
+Epic Bongaroo|Epic|Clackle|Novastar|6%
+Epic Clackle|Epic|Gloobo|Kelpsong|6%
+Epic Clocktri|Epic|Fizzwick|Kelpsong|6%
+Epic Dodecadon|Epic|Bongaroo|Fizzwick|6%
+Epic Fizzwick|Epic|Clocktri|Fizzwick|6%
+Epic Gloobo|Epic|Clackle|Kelpsong|6%
+Epic Hexapella|Epic|Clocktri|Hexbloom|6%
+Epic Hexbloom|Epic|Fizzwick|Novastar|6%
+Epic Kelpsong|Epic|Bongaroo|Lulla|6%
+Epic Lulla|Epic|Lulla|Novastar|6%
+Epic Novastar|Epic|Kelpsong|Solara|6%
+Epic Solara|Epic|Clocktri|Gloobo|6%
+Epic Tikki|Epic|Bongaroo|Solara|6%
+Epic Twinkla|Epic|Bongaroo|Gloobo|6%`
 },
-
 "Prism Peaks": {
-elements: "Moss / Tide / Lumen / Gust",
-recipes: `
-Möbius|Ruin|Flutterby|Grumblox
-Rare Aurielle|Rare|Aurielle|Polyphon
-Rare Blocco|Rare|Aurielle|Polyphon
-Rare Bobble|Rare|Grumblox|Polyphon
-Rare Cubbit|Rare|Kelpsong|Polyphon
-Rare Flutterby|Rare|Grumblox|Polyphon
-Rare Gloobo|Rare|Kelpsong|Polyphon
-Rare Grumblox|Rare|Kelpsong|Polyphon
-Rare Hexbloom|Rare|Grumblox|Polyphon
-Rare Kelpsong|Rare|Aurielle|Polyphon
-Rare Lulla|Rare|Flutterby|Polyphon
-Rare Möbius|Rare|Grumblox|Polyphon
-Rare Polyphon|Rare|Flutterby|Polyphon
-Rare Prismo|Rare|Kelpsong|Polyphon
-Rare Rumbletum|Rare|Aurielle|Polyphon
-Rare Twinkla|Rare|Flutterby|Polyphon
-Rare Zephyx|Rare|Flutterby|Polyphon
-Epic Aurielle|Epic|Grumblox|Prismo
-Epic Blocco|Epic|Flutterby|Rumbletum
-Epic Bobble|Epic|Flutterby|Lulla
-Epic Cubbit|Epic|Kelpsong|Prismo
-Epic Flutterby|Epic|Gloobo|Grumblox
-Epic Gloobo|Epic|Kelpsong|Lulla
-Epic Grumblox|Epic|Aurielle|Lulla
-Epic Hexbloom|Epic|Flutterby|Gloobo
-Epic Kelpsong|Epic|Aurielle|Rumbletum
-Epic Lulla|Epic|Cubbit|Grumblox
-Epic Möbius|Epic|Aurielle|Cubbit
-Epic Polyphon|Epic|Cubbit|Flutterby
-Epic Prismo|Epic|Aurielle|Prismo
-Epic Rumbletum|Epic|Grumblox|Lulla
-Epic Twinkla|Epic|Aurielle|Gloobo
-Epic Zephyx|Epic|Cubbit|Kelpsong
-`
+  elements: "Moss, Tide, Lumen, Gust",
+  recipes: `
+Möbius|Ruin|Flutterby|Grumblox|10%
+Rare Aurielle|Rare|Aurielle|Polyphon|4%
+Rare Blocco|Rare|Aurielle|Polyphon|4%
+Rare Bobble|Rare|Grumblox|Polyphon|4%
+Rare Cubbit|Rare|Kelpsong|Polyphon|4%
+Rare Flutterby|Rare|Grumblox|Polyphon|4%
+Rare Gloobo|Rare|Kelpsong|Polyphon|4%
+Rare Grumblox|Rare|Kelpsong|Polyphon|4%
+Rare Hexbloom|Rare|Grumblox|Polyphon|4%
+Rare Kelpsong|Rare|Aurielle|Polyphon|4%
+Rare Lulla|Rare|Flutterby|Polyphon|4%
+Rare Möbius|Rare|Grumblox|Polyphon|4%
+Rare Polyphon|Rare|Flutterby|Polyphon|4%
+Rare Prismo|Rare|Kelpsong|Polyphon|4%
+Rare Rumbletum|Rare|Aurielle|Polyphon|4%
+Rare Twinkla|Rare|Flutterby|Polyphon|4%
+Rare Zephyx|Rare|Flutterby|Polyphon|4%
+Epic Aurielle|Epic|Grumblox|Prismo|6%
+Epic Blocco|Epic|Flutterby|Rumbletum|6%
+Epic Bobble|Epic|Flutterby|Lulla|6%
+Epic Cubbit|Epic|Kelpsong|Prismo|6%
+Epic Flutterby|Epic|Gloobo|Grumblox|6%
+Epic Gloobo|Epic|Kelpsong|Lulla|6%
+Epic Grumblox|Epic|Aurielle|Lulla|6%
+Epic Hexbloom|Epic|Flutterby|Gloobo|6%
+Epic Kelpsong|Epic|Aurielle|Rumbletum|6%
+Epic Lulla|Epic|Cubbit|Grumblox|6%
+Epic Möbius|Epic|Aurielle|Cubbit|6%
+Epic Polyphon|Epic|Cubbit|Flutterby|6%
+Epic Prismo|Epic|Aurielle|Prismo|6%
+Epic Rumbletum|Epic|Grumblox|Lulla|6%
+Epic Twinkla|Epic|Aurielle|Gloobo|6%
+Epic Zephyx|Epic|Cubbit|Kelpsong|6%`
 },
-
 "Volt Grotto": {
-elements: "Ember / Tide / Lumen / Gust",
-recipes: `
-Glitchling|Ruin|Sparkplug|Steamtrom
-Rare Aurielle|Rare|Celestar|Novastar
-Rare Blocco|Rare|Celestar|Steamtrom
-Rare Celestar|Rare|Celestar|Novastar
-Rare Cubbit|Rare|Celestar|Steamtrom
-Rare Fizzwick|Rare|Aurielle|Celestar
-Rare Glitchling|Rare|Aurielle|Celestar
-Rare Lulla|Rare|Celestar|Novastar
-Rare Novastar|Rare|Celestar|Sparkplug
-Rare Prismo|Rare|Celestar|Steamtrom
-Rare Solara|Rare|Celestar|Sparkplug
-Rare Sparkplug|Rare|Celestar|Sparkplug
-Rare Steamtrom|Rare|Aurielle|Celestar
-Rare Tikki|Rare|Celestar|Steamtrom
-Rare Twinkla|Rare|Celestar|Sparkplug
-Rare Whirlo|Rare|Aurielle|Celestar
-Rare Zephyx|Rare|Celestar|Novastar
-Epic Aurielle|Epic|Lulla|Sparkplug
-Epic Blocco|Epic|Sparkplug|Whirlo
-Epic Celestar|Epic|Prismo|Sparkplug
-Epic Cubbit|Epic|Fizzwick|Steamtrom
-Epic Fizzwick|Epic|Aurielle|Cubbit
-Epic Glitchling|Epic|Lulla|Novastar
-Epic Lulla|Epic|Aurielle|Lulla
-Epic Novastar|Epic|Aurielle|Solara
-Epic Prismo|Epic|Fizzwick|Novastar
-Epic Solara|Epic|Steamtrom|Whirlo
-Epic Sparkplug|Epic|Cubbit|Novastar
-Epic Steamtrom|Epic|Prismo|Steamtrom
-Epic Tikki|Epic|Fizzwick|Sparkplug
-Epic Twinkla|Epic|Aurielle|Whirlo
-Epic Whirlo|Epic|Novastar|Solara
-Epic Zephyx|Epic|Cubbit|Sparkplug
-`
+  elements: "Ember, Tide, Lumen, Gust",
+  recipes: `
+Glitchling|Ruin|Sparkplug|Steamtrom|10%
+Rare Aurielle|Rare|Celestar|Novastar|4%
+Rare Blocco|Rare|Celestar|Steamtrom|4%
+Rare Celestar|Rare|Celestar|Novastar|4%
+Rare Cubbit|Rare|Celestar|Steamtrom|4%
+Rare Fizzwick|Rare|Aurielle|Celestar|4%
+Rare Glitchling|Rare|Aurielle|Celestar|4%
+Rare Lulla|Rare|Celestar|Novastar|4%
+Rare Novastar|Rare|Celestar|Sparkplug|4%
+Rare Prismo|Rare|Celestar|Steamtrom|4%
+Rare Solara|Rare|Celestar|Sparkplug|4%
+Rare Sparkplug|Rare|Celestar|Sparkplug|4%
+Rare Steamtrom|Rare|Aurielle|Celestar|4%
+Rare Tikki|Rare|Celestar|Steamtrom|4%
+Rare Twinkla|Rare|Celestar|Sparkplug|4%
+Rare Whirlo|Rare|Aurielle|Celestar|4%
+Rare Zephyx|Rare|Celestar|Novastar|4%
+Epic Aurielle|Epic|Lulla|Sparkplug|6%
+Epic Blocco|Epic|Sparkplug|Whirlo|6%
+Epic Celestar|Epic|Prismo|Sparkplug|6%
+Epic Cubbit|Epic|Fizzwick|Steamtrom|6%
+Epic Fizzwick|Epic|Aurielle|Cubbit|6%
+Epic Glitchling|Epic|Lulla|Novastar|6%
+Epic Lulla|Epic|Aurielle|Lulla|6%
+Epic Novastar|Epic|Aurielle|Solara|6%
+Epic Prismo|Epic|Fizzwick|Novastar|6%
+Epic Solara|Epic|Steamtrom|Whirlo|6%
+Epic Sparkplug|Epic|Cubbit|Novastar|6%
+Epic Steamtrom|Epic|Prismo|Steamtrom|6%
+Epic Tikki|Epic|Fizzwick|Sparkplug|6%
+Epic Twinkla|Epic|Aurielle|Whirlo|6%
+Epic Whirlo|Epic|Novastar|Solara|6%
+Epic Zephyx|Epic|Cubbit|Sparkplug|6%`
 },
-
 "Sunscorch Dunes": {
-elements: "Moss / Ember / Lumen / Gust",
-recipes: `
-Monolith|Ruin|Clocktri|Didgeroo
-Rare Bobble|Rare|Didgeroo|Organon
-Rare Clackle|Rare|Flutterby|Organon
-Rare Clocktri|Rare|Flutterby|Organon
-Rare Didgeroo|Rare|Clocktri|Organon
-Rare Flutterby|Rare|Didgeroo|Organon
-Rare Hexbloom|Rare|Flutterby|Organon
-Rare Monolith|Rare|Flutterby|Organon
-Rare Organon|Rare|Organon|Sparkplug
-Rare Prismo|Rare|Clocktri|Organon
-Rare Rumbletum|Rare|Clocktri|Organon
-Rare Solara|Rare|Clocktri|Organon
-Rare Sparkplug|Rare|Didgeroo|Organon
-Rare Tikki|Rare|Organon|Sparkplug
-Rare Twinkla|Rare|Didgeroo|Organon
-Rare Whirlo|Rare|Organon|Sparkplug
-Rare Zephyx|Rare|Organon|Sparkplug
-Epic Bobble|Epic|Flutterby|Prismo
-Epic Clackle|Epic|Clocktri|Hexbloom
-Epic Clocktri|Epic|Flutterby|Solara
-Epic Didgeroo|Epic|Didgeroo|Solara
-Epic Flutterby|Epic|Flutterby|Rumbletum
-Epic Hexbloom|Epic|Didgeroo|Whirlo
-Epic Monolith|Epic|Clocktri|Rumbletum
-Epic Organon|Epic|Clackle|Didgeroo
-Epic Prismo|Epic|Hexbloom|Sparkplug
-Epic Rumbletum|Epic|Flutterby|Hexbloom
-Epic Solara|Epic|Clocktri|Prismo
-Epic Sparkplug|Epic|Prismo|Sparkplug
-Epic Tikki|Epic|Clocktri|Whirlo
-Epic Twinkla|Epic|Sparkplug|Whirlo
-Epic Whirlo|Epic|Didgeroo|Prismo
-Epic Zephyx|Epic|Clackle|Flutterby
-`
+  elements: "Moss, Ember, Lumen, Gust",
+  recipes: `
+Monolith|Ruin|Clocktri|Didgeroo|10%
+Rare Bobble|Rare|Didgeroo|Organon|4%
+Rare Clackle|Rare|Flutterby|Organon|4%
+Rare Clocktri|Rare|Flutterby|Organon|4%
+Rare Didgeroo|Rare|Clocktri|Organon|4%
+Rare Flutterby|Rare|Didgeroo|Organon|4%
+Rare Hexbloom|Rare|Flutterby|Organon|4%
+Rare Monolith|Rare|Flutterby|Organon|4%
+Rare Organon|Rare|Organon|Sparkplug|4%
+Rare Prismo|Rare|Clocktri|Organon|4%
+Rare Rumbletum|Rare|Clocktri|Organon|4%
+Rare Solara|Rare|Clocktri|Organon|4%
+Rare Sparkplug|Rare|Didgeroo|Organon|4%
+Rare Tikki|Rare|Organon|Sparkplug|4%
+Rare Twinkla|Rare|Didgeroo|Organon|4%
+Rare Whirlo|Rare|Organon|Sparkplug|4%
+Rare Zephyx|Rare|Organon|Sparkplug|4%
+Epic Bobble|Epic|Flutterby|Prismo|6%
+Epic Clackle|Epic|Clocktri|Hexbloom|6%
+Epic Clocktri|Epic|Flutterby|Solara|6%
+Epic Didgeroo|Epic|Didgeroo|Solara|6%
+Epic Flutterby|Epic|Flutterby|Rumbletum|6%
+Epic Hexbloom|Epic|Didgeroo|Whirlo|6%
+Epic Monolith|Epic|Clocktri|Rumbletum|6%
+Epic Organon|Epic|Clackle|Didgeroo|6%
+Epic Prismo|Epic|Hexbloom|Sparkplug|6%
+Epic Rumbletum|Epic|Flutterby|Hexbloom|6%
+Epic Solara|Epic|Clocktri|Prismo|6%
+Epic Sparkplug|Epic|Prismo|Sparkplug|6%
+Epic Tikki|Epic|Clocktri|Whirlo|6%
+Epic Twinkla|Epic|Sparkplug|Whirlo|6%
+Epic Whirlo|Epic|Didgeroo|Prismo|6%
+Epic Zephyx|Epic|Clackle|Flutterby|6%`
 },
-
 "Bubble Lagoon": {
-elements: "Moss / Ember / Tide / Gust",
-recipes: `
-Oddball|Ruin|Bongaroo|Didgeroo
-Rare Bassoonix|Rare|Bassoonix|Steamtrom
-Rare Blocco|Rare|Bassoonix|Grumblox
-Rare Bobble|Rare|Bassoonix|Steamtrom
-Rare Bongaroo|Rare|Bassoonix|Steamtrom
-Rare Clackle|Rare|Bassoonix|Bongaroo
-Rare Cubbit|Rare|Bassoonix|Didgeroo
-Rare Didgeroo|Rare|Bassoonix|Didgeroo
-Rare Fizzwick|Rare|Bassoonix|Bongaroo
-Rare Gloobo|Rare|Bassoonix|Grumblox
-Rare Grumblox|Rare|Bassoonix|Didgeroo
-Rare Oddball|Rare|Bassoonix|Grumblox
-Rare Rumbletum|Rare|Bassoonix|Bongaroo
-Rare Steamtrom|Rare|Bassoonix|Didgeroo
-Rare Tikki|Rare|Bassoonix|Steamtrom
-Rare Whirlo|Rare|Bassoonix|Bongaroo
-Rare Zephyx|Rare|Bassoonix|Grumblox
-Epic Bassoonix|Epic|Bongaroo|Rumbletum
-Epic Blocco|Epic|Rumbletum|Steamtrom
-Epic Bobble|Epic|Didgeroo|Gloobo
-Epic Bongaroo|Epic|Clackle|Steamtrom
-Epic Clackle|Epic|Grumblox|Whirlo
-Epic Cubbit|Epic|Cubbit|Grumblox
-Epic Didgeroo|Epic|Didgeroo|Rumbletum
-Epic Fizzwick|Epic|Clackle|Grumblox
-Epic Gloobo|Epic|Cubbit|Steamtrom
-Epic Grumblox|Epic|Didgeroo|Fizzwick
-Epic Oddball|Epic|Didgeroo|Whirlo
-Epic Rumbletum|Epic|Bongaroo|Gloobo
-Epic Steamtrom|Epic|Gloobo|Grumblox
-Epic Tikki|Epic|Bongaroo|Clackle
-Epic Whirlo|Epic|Bongaroo|Whirlo
-Epic Zephyx|Epic|Fizzwick|Grumblox
-`
+  elements: "Moss, Ember, Tide, Gust",
+  recipes: `
+Oddball|Ruin|Bongaroo|Didgeroo|10%
+Rare Bassoonix|Rare|Bassoonix|Steamtrom|4%
+Rare Blocco|Rare|Bassoonix|Grumblox|4%
+Rare Bobble|Rare|Bassoonix|Steamtrom|4%
+Rare Bongaroo|Rare|Bassoonix|Steamtrom|4%
+Rare Clackle|Rare|Bassoonix|Bongaroo|4%
+Rare Cubbit|Rare|Bassoonix|Didgeroo|4%
+Rare Didgeroo|Rare|Bassoonix|Didgeroo|4%
+Rare Fizzwick|Rare|Bassoonix|Bongaroo|4%
+Rare Gloobo|Rare|Bassoonix|Grumblox|4%
+Rare Grumblox|Rare|Bassoonix|Didgeroo|4%
+Rare Oddball|Rare|Bassoonix|Grumblox|4%
+Rare Rumbletum|Rare|Bassoonix|Bongaroo|4%
+Rare Steamtrom|Rare|Bassoonix|Didgeroo|4%
+Rare Tikki|Rare|Bassoonix|Steamtrom|4%
+Rare Whirlo|Rare|Bassoonix|Bongaroo|4%
+Rare Zephyx|Rare|Bassoonix|Grumblox|4%
+Epic Bassoonix|Epic|Bongaroo|Rumbletum|6%
+Epic Blocco|Epic|Rumbletum|Steamtrom|6%
+Epic Bobble|Epic|Didgeroo|Gloobo|6%
+Epic Bongaroo|Epic|Clackle|Steamtrom|6%
+Epic Clackle|Epic|Grumblox|Whirlo|6%
+Epic Cubbit|Epic|Cubbit|Grumblox|6%
+Epic Didgeroo|Epic|Didgeroo|Rumbletum|6%
+Epic Fizzwick|Epic|Clackle|Grumblox|6%
+Epic Gloobo|Epic|Cubbit|Steamtrom|6%
+Epic Grumblox|Epic|Didgeroo|Fizzwick|6%
+Epic Oddball|Epic|Didgeroo|Whirlo|6%
+Epic Rumbletum|Epic|Bongaroo|Gloobo|6%
+Epic Steamtrom|Epic|Gloobo|Grumblox|6%
+Epic Tikki|Epic|Bongaroo|Clackle|6%
+Epic Whirlo|Epic|Bongaroo|Whirlo|6%
+Epic Zephyx|Epic|Fizzwick|Grumblox|6%`
 }
 };
 
-const chance = { Rare: "4%", Epic: "6%", Ruin: "10%" };
-
-const data = Object.entries(rawData).map(([name, island]) => ({
-  name,
-  elements: island.elements,
-  recipes: island.recipes.trim().split("\n").map(line => {
-    const [result, rarity, parent1, parent2] = line.split("|");
-    return { result, rarity, parent1, parent2, chance: chance[rarity] };
-  })
-}));
-
-const archive = document.getElementById("archive");
+const nav = document.getElementById("islandNav");
+const rows = document.getElementById("recipes");
 const search = document.getElementById("search");
 const rarity = document.getElementById("rarity");
-const resultCount = document.getElementById("resultCount");
-const islandNav = document.getElementById("islandNav");
+let currentIsland = "Shape Island";
 
-let activeIsland = "all";
-
-const allRecipes = data.reduce((sum, island) =>
-  sum + island.recipes.length, 0
-);
-
-document.getElementById("totalRecipes").textContent = allRecipes;
-
-data.forEach(island => {
-  const button = document.createElement("button");
-  button.dataset.island = island.name;
-
-  const label = document.createElement("span");
-  label.textContent = island.name;
-
-  const number = document.createElement("span");
-  number.textContent = String(island.recipes.length).padStart(2, "0");
-
-  button.append(label, number);
-
-  button.addEventListener("click", () => {
-    activeIsland = island.name;
-    updateNavigation();
-    render();
+function getRecipes(island) {
+  return islands[island].recipes.trim().split("\n").map(line => {
+    const [name, type, parent1, parent2, chance] = line.trim().split("|");
+    return {name, type, parent1, parent2, chance};
   });
+}
 
-  islandNav.appendChild(button);
-});
+function selectIsland(name) {
+  currentIsland = name;
+  document.getElementById("islandTitle").textContent = name;
+  document.getElementById("crumb").textContent = name;
+  document.getElementById("infoName").textContent = name;
+  document.getElementById("infoElements").textContent = islands[name].elements;
+  search.value = "";
+  rarity.value = "all";
 
-islandNav.querySelector('[data-island="all"]').addEventListener("click", () => {
-  activeIsland = "all";
-  updateNavigation();
+  [...nav.children].forEach(link => {
+    link.classList.toggle("active", link.dataset.island === name);
+  });
   render();
-});
+}
 
-function updateNavigation() {
-  islandNav.querySelectorAll("button").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.island === activeIsland
-    );
+Object.keys(islands).forEach(name => {
+  const link = document.createElement("a");
+  link.href = "#";
+  link.className = "island-link";
+  link.textContent = name;
+  link.dataset.island = name;
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    selectIsland(name);
   });
-}
-
-function makeCell(className, value) {
-  const element = document.createElement("div");
-  element.className = className;
-  element.textContent = value;
-  return element;
-}
+  nav.appendChild(link);
+});
 
 function render() {
-  archive.innerHTML = "";
-
   const query = search.value.trim().toLowerCase();
   const selectedRarity = rarity.value;
 
-  let total = 0;
-
-  data.filter(island =>
-    activeIsland === "all" || island.name === activeIsland
-  ).forEach(island => {
-
-    const recipes = island.recipes.filter(recipe => {
-      const matchesRarity =
-        selectedRarity === "all" ||
-        recipe.rarity === selectedRarity;
-
-      const searchable = [
-        recipe.result,
-        recipe.parent1,
-        recipe.parent2,
-        island.name
-      ].join(" ").toLowerCase();
-
-      return matchesRarity && searchable.includes(query);
-    });
-
-    if (!recipes.length) return;
-
-    total += recipes.length;
-
-    const section = document.createElement("section");
-    section.className = "recipe-table";
-
-    const header = document.createElement("div");
-    header.className = "island-title";
-
-    const heading = document.createElement("div");
-    const title = document.createElement("h3");
-    title.textContent = island.name;
-
-    const elements = document.createElement("div");
-    elements.className = "island-elements";
-    elements.textContent = island.elements;
-
-    heading.append(title, elements);
-
-    const count = document.createElement("span");
-    count.className = "island-total";
-    count.textContent = `${recipes.length} RECORDS`;
-
-    header.append(heading, count);
-
-    const tableHeader = document.createElement("div");
-    tableHeader.className = "table-head";
-
-    [
-      "Result",
-      "Parent one",
-      "",
-      "Parent two",
-      "Rarity",
-      "Chance"
-    ].forEach(label => {
-      tableHeader.appendChild(makeCell("", label));
-    });
-
-    section.append(header, tableHeader);
-
-    recipes.forEach(recipe => {
-      const row = document.createElement("div");
-      row.className = "recipe-row";
-
-      const result = document.createElement("div");
-      result.appendChild(makeCell("result-name", recipe.result));
-
-      const sub = makeCell("result-sub", "SPECIAL RESULT");
-      result.appendChild(sub);
-
-      row.append(
-        result,
-        makeCell("parent-name", recipe.parent1),
-        makeCell("plus", "+"),
-        makeCell("parent-name", recipe.parent2),
-        makeCell("tag " + recipe.rarity.toLowerCase(), recipe.rarity),
-        makeCell("probability", recipe.chance)
-      );
-
-      section.appendChild(row);
-    });
-
-    archive.appendChild(section);
+  const filtered = getRecipes(currentIsland).filter(item => {
+    const matchesRarity = selectedRarity === "all" || item.type === selectedRarity;
+    const matchesSearch = [
+      item.name, item.parent1, item.parent2
+    ].join(" ").toLowerCase().includes(query);
+    return matchesRarity && matchesSearch;
   });
 
-  resultCount.textContent =
-    `${total} ${total === 1 ? "RECORD" : "RECORDS"}`;
+  rows.innerHTML = "";
+  document.getElementById("count").textContent =
+    `${filtered.length} of ${getRecipes(currentIsland).length} recipes`;
 
-  if (total === 0) {
-    const empty = document.createElement("div");
-    empty.className = "empty";
-    empty.textContent = "No matching recipes found.";
-    archive.appendChild(empty);
+  if (!filtered.length) {
+    rows.innerHTML = '<tr><td class="empty" colspan="5">No matching recipes found.</td></tr>';
+    return;
   }
+
+  filtered.forEach(item => {
+    const tr = document.createElement("tr");
+    const name = document.createElement("td");
+    name.className = "name";
+    name.textContent = item.name;
+
+    const type = document.createElement("td");
+    type.className = "rarity " + item.type.toLowerCase();
+    type.textContent = item.type;
+
+    const parent1 = document.createElement("td");
+    parent1.textContent = item.parent1;
+
+    const parent2 = document.createElement("td");
+    parent2.textContent = item.parent2;
+
+    const chance = document.createElement("td");
+    chance.className = "chance";
+    chance.textContent = item.chance;
+
+    [name, type, parent1, parent2, chance].forEach(td => tr.appendChild(td));
+    rows.appendChild(tr);
+  });
 }
 
 search.addEventListener("input", render);
 rarity.addEventListener("change", render);
-
-render();
+selectIsland(currentIsland);
 </script>
-
 </body>
 </html>
